@@ -56,6 +56,40 @@ const SignUp = () => {
                                             className="input input-bordered"
                                         />
                                     </div>
+                                    <p className="my-3 text-sm">Sign Up as:</p>
+                                    <div className="py-3 flex items-center">
+                                        <div className="flex items-center mr-4">
+                                            <input
+                                                type="radio"
+                                                name="userType"
+                                                className="radio radio-primary"
+                                                value="buyer"
+                                                checked
+                                                id="buyer"
+                                            />
+                                            <label
+                                                className="ml-2"
+                                                htmlFor="buyer"
+                                            >
+                                                Buyer
+                                            </label>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                id="seller"
+                                                name="userType"
+                                                className="radio radio-primary"
+                                                value="seller"
+                                            />
+                                            <label
+                                                className="ml-2"
+                                                htmlFor="seller"
+                                            >
+                                                Seller
+                                            </label>
+                                        </div>
+                                    </div>
                                     <div className="form-control mt-6">
                                         <Link
                                             to="/signup"

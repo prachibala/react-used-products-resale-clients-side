@@ -1,7 +1,18 @@
-import React from "react";
+import { data } from "autoprefixer";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Category from "./Category";
 
 const Categories = () => {
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:5000/categories")
+            .then((res) => res.json())
+            .then((data) => setCategories(data))
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
     return (
         <div>
             <section className="py-6 sm:py-12  dark:text-gray-800 w-10/12 mx-auto">
@@ -16,34 +27,9 @@ const Categories = () => {
                         </p>
                     </div>
                     <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
-                        <article className="flex flex-col bg-blue-100 rounded-full ">
-                            <Link className="flex flex-col flex-1 p-4">
-                                <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">
-                                    Te nulla oportere
-                                </h3>
-                            </Link>
-                        </article>
-                        <article className="flex flex-col bg-blue-100 rounded-full text-center">
-                            <Link className="flex flex-col flex-1 p-4">
-                                <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">
-                                    Te nulla oportere
-                                </h3>
-                            </Link>
-                        </article>
-                        <article className="flex flex-col bg-blue-100 rounded-full text-center">
-                            <Link className="flex flex-col flex-1 p-4">
-                                <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">
-                                    Te nulla oportere
-                                </h3>
-                            </Link>
-                        </article>
-                        <article className="flex flex-col bg-blue-100 rounded-full text-center">
-                            <Link className="flex flex-col flex-1 p-4">
-                                <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">
-                                    Te nulla oportere
-                                </h3>
-                            </Link>
-                        </article>
+                        {categories.map((category) => (
+                            <Category category={category}></Category>
+                        ))}
                     </div>
                 </div>
             </section>

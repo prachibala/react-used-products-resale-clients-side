@@ -12,7 +12,7 @@ const Products = () => {
                             mucius.
                         </p>
                     </div>
-                    <div className="grid grid-rows-2 grid-cols-1 gap-x-9 gap-y-9 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-rows-2 grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
                         <article className="flex flex-col shadow-lg rounded">
                             <a
                                 rel="noopener noreferrer"
