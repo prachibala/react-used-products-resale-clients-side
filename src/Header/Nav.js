@@ -76,10 +76,10 @@ const Nav = () => {
                             HOME
                         </Link>
                         <Link
-                            to="/"
+                            to="/blogs"
                             className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
                         >
-                            ABOUT
+                            Blogs
                         </Link>
                         <Link
                             to="/signin"
