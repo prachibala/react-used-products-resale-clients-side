@@ -63,18 +63,19 @@ const Nav = () => {
                             </ul>
                         </div>
                         <a className="btn btn-ghost normal-case text-xl">
-                            TakeMe
+                            Take
+                            <span className="text-blue-300 text-2xl">M</span>e
                         </a>
                     </div>
 
                     <div className="navbar-end">
-                        <a className="btn  dark:text-gray-800 btn-ghost ml-3">
+                        <a className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible">
                             HOME
                         </a>
-                        <a className="btn  dark:text-gray-800 btn-ghost ml-3">
+                        <a className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible">
                             ABOUT
                         </a>
-                        <a className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3">
+                        <a className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3 invisible lg:visible">
                             Sign In
                         </a>
                     </div>
