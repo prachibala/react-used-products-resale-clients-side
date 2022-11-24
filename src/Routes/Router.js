@@ -6,6 +6,8 @@ import ErrorPage from "../Error/ErrorPage";
 import SignIn from "../Login/SignIn";
 import SignUp from "../Login/SignUp/SignUp";
 import Blogs from "../Pages/Blogs";
+import AllProducts from "../Pages/AllProducts";
+import ProdDetails from "../Pages/ProdDetails";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <Blogs></Blogs>,
+            },
+            {
+                path: "/all-products",
+                element: <AllProducts></AllProducts>,
+            },
+            {
+                path: "/product-details",
+                element: <ProdDetails></ProdDetails>,
             },
         ],
     },

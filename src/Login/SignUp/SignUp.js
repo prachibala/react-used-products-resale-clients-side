@@ -57,7 +57,7 @@ const SignUp = () => {
                                         />
                                     </div>
                                     <p className="my-3 text-sm">Sign Up as:</p>
-                                    <div className="py-3 flex items-center">
+                                    <div className="flex items-center">
                                         <div className="flex items-center mr-4">
                                             <input
                                                 type="radio"
