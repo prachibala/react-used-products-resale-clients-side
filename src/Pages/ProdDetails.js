@@ -9,7 +9,7 @@ const ProdDetails = () => {
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">Title!</h2>
-                    <p>Click the button to listen on Spotiwhy app.</p>
+                    <p></p>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary">Listen</button>
                     </div>
