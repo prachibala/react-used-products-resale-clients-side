@@ -69,15 +69,24 @@ const Nav = () => {
                     </div>
 
                     <div className="navbar-end">
-                        <a className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible">
+                        <Link
+                            to="/"
+                            className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
+                        >
                             HOME
-                        </a>
-                        <a className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible">
+                        </Link>
+                        <Link
+                            to="/"
+                            className="btn  dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
+                        >
                             ABOUT
-                        </a>
-                        <a className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3 invisible lg:visible">
+                        </Link>
+                        <Link
+                            to="/signin"
+                            className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
+                        >
                             Sign In
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
