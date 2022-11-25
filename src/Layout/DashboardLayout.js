@@ -15,7 +15,7 @@ const DashboardLayout = () => {
                     type="checkbox"
                     className="drawer-toggle"
                 />
-                <div className="drawer-content  ">
+                <div className="drawer-content w-full">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">
@@ -49,7 +49,7 @@ const DashboardLayout = () => {
                             </div>
                             <div className="divide-y divide-gray-700">
                                 <ul className="pt-2 pb-4 space-y-1 text-sm">
-                                    <li className="dark:bg-blue-600 dark:text-white">
+                                    <li className="dark:bg-blue-400 dark:text-white">
                                         <a
                                             rel="noopener noreferrer"
                                             href="#"
@@ -67,7 +67,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/add-products"
+                                            to="/dashboard/add-products"
                                             className="flex items-center p-2 space-x-3 rounded-md"
                                         >
                                             <IoAddCircleOutline className="w-5 h-5 fill-current dark:text-gray-400"></IoAddCircleOutline>
@@ -76,7 +76,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/my-products"
+                                            to="/dashboard/my-products"
                                             rel="noopener noreferrer"
                                             href="#"
                                             className="flex items-center p-2 space-x-3 rounded-md"
@@ -87,7 +87,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/my-orders"
+                                            to="/dashboard/my-orders"
                                             className="flex items-center p-2 space-x-3 rounded-md"
                                         >
                                             <svg
@@ -104,7 +104,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/all-sellers"
+                                            to="/dashboard/all-sellers"
                                             className="flex items-center p-2 space-x-3 rounded-md"
                                         >
                                             <BiUser className="w-5 h-5 fill-current dark:text-gray-400"></BiUser>
@@ -113,7 +113,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/all-buyers"
+                                            to="/dashboard/all-buyers"
                                             className="flex items-center p-2 space-x-3 rounded-md"
                                         >
                                             <BiUser className="w-5 h-5 fill-current dark:text-gray-400"></BiUser>
