@@ -1,17 +1,22 @@
 import React from "react";
-
+import pic from "../../Images/addCart.svg";
 const AddProducts = () => {
     return (
         <div>
-            <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
+            <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-base-200 dark:text-gray-800 mt-6">
                 <div className="flex flex-col justify-between">
                     <div className="space-y-2">
                         <h2 className="text-4xl font-bold leading-tight lg:text-5xl">
-                            Let's talk!
+                            Add Product!
                         </h2>
                         <div className="dark:text-gray-400">
                             Vivamus in nisl metus? Phasellus.
                         </div>
+                        <img
+                            src={pic}
+                            alt="Add Product Image"
+                            className="p-6 h-52 md:h-64"
+                        />
                     </div>
                     <img
                         src="assets/svg/doodle.svg"
@@ -31,7 +36,7 @@ const AddProducts = () => {
                             id="name"
                             type="text"
                             placeholder=""
-                            className="w-full p-3 rounded dark:bg-gray-800"
+                            className="w-full p-3 rounded dark:bg-white"
                         />
                     </div>
                     <div>
@@ -41,7 +46,7 @@ const AddProducts = () => {
                         <input
                             id="email"
                             type="email"
-                            className="w-full p-3 rounded dark:bg-gray-800"
+                            className="w-full p-3 rounded dark:bg-white"
                         />
                     </div>
                     <div>
@@ -51,14 +56,14 @@ const AddProducts = () => {
                         <textarea
                             id="message"
                             rows="3"
-                            className="w-full p-3 rounded dark:bg-gray-800"
+                            className="w-full p-3 rounded dark:bg-white"
                         ></textarea>
                     </div>
                     <button
                         type="submit"
-                        className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-sky-400 dark:text-gray-900"
+                        className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-blue-400 dark:text-white"
                     >
-                        Send Message
+                        Add Product
                     </button>
                 </form>
             </div>
