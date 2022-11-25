@@ -1,7 +1,15 @@
 import React from "react";
-import { Form, Link } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 const SignIn = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const handleLogin = (data) => {
+        console.log(data);
+    };
     return (
         <div className="w-10/12 mx-auto">
             <div className="hero min-h-screen bg-base-200">
@@ -15,7 +23,8 @@ const SignIn = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
-                            <form>
+                            {/* FORM */}
+                            <form onSubmit={handleSubmit(handleLogin)}>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">
@@ -23,9 +32,13 @@ const SignIn = () => {
                                         </span>
                                     </label>
                                     <input
-                                        type="text"
-                                        placeholder="email"
-                                        className="input input-bordered"
+                                        type="email"
+                                        placeholder="Email"
+                                        {...register("Email", {
+                                            required: true,
+                                            pattern: /^\S+@\S+$/i,
+                                        })}
+                                        className="input input-bordered w-full max-w-xs"
                                     />
                                 </div>
                                 <div className="form-control">
@@ -35,23 +48,18 @@ const SignIn = () => {
                                         </span>
                                     </label>
                                     <input
-                                        type="text"
-                                        placeholder="password"
-                                        className="input input-bordered"
+                                        type="password"
+                                        placeholder="Password"
+                                        {...register("Password", {})}
+                                        className="input input-bordered w-full max-w-xs"
                                     />
-                                    <label className="label">
-                                        <a
-                                            href="#"
-                                            className="label-text-alt link link-hover"
-                                        >
-                                            Forgot password?
-                                        </a>
-                                    </label>
                                 </div>
+
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-primary bg-blue-400">
-                                        Login
-                                    </button>
+                                    <input
+                                        type="submit"
+                                        className="btn btn-primary bg-blue-400"
+                                    />
                                 </div>
                             </form>
                             <div className="flex items-center pt-4 space-x-1">

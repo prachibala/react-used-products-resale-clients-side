@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
 const SignUp = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const onSubmit = (data) => console.log(data);
     return (
         <div>
             <div className="w-10/12 mx-auto">
@@ -16,7 +22,8 @@ const SignUp = () => {
                         </div>
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                             <div className="card-body">
-                                <form>
+                                {/* FORM */}
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">
@@ -25,9 +32,9 @@ const SignUp = () => {
                                         </label>
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                            className="input input-bordered"
+                                            placeholder="Name"
+                                            {...register("Name", {})}
+                                            className="input input-bordered w-full max-w-xs"
                                         />
                                     </div>
                                     <div className="form-control">
@@ -38,9 +45,12 @@ const SignUp = () => {
                                         </label>
                                         <input
                                             type="email"
-                                            placeholder="email"
-                                            name="email"
-                                            className="input input-bordered"
+                                            placeholder="Email"
+                                            {...register("Email", {
+                                                required: true,
+                                                pattern: /^\S+@\S+$/i,
+                                            })}
+                                            className="input input-bordered w-full max-w-xs"
                                         />
                                     </div>
                                     <div className="form-control">
@@ -51,52 +61,49 @@ const SignUp = () => {
                                         </label>
                                         <input
                                             type="password"
-                                            placeholder="password"
-                                            name="pass"
-                                            className="input input-bordered"
+                                            placeholder="Password"
+                                            {...register("Password", {})}
+                                            className="input input-bordered w-full max-w-xs"
                                         />
                                     </div>
                                     <p className="my-3 text-sm">Sign Up as:</p>
                                     <div className="flex items-center">
                                         <div className="flex items-center mr-4">
                                             <input
+                                                {...register("Developer", {
+                                                    required: true,
+                                                })}
                                                 type="radio"
-                                                name="userType"
-                                                className="radio radio-primary"
-                                                value="buyer"
-                                                checked
-                                                id="buyer"
+                                                value="Seller"
                                             />
                                             <label
                                                 className="ml-2"
                                                 htmlFor="buyer"
                                             >
-                                                Buyer
+                                                Seller
                                             </label>
                                         </div>
                                         <div className="flex items-center">
                                             <input
+                                                {...register("Developer", {
+                                                    required: true,
+                                                })}
                                                 type="radio"
-                                                id="seller"
-                                                name="userType"
-                                                className="radio radio-primary"
-                                                value="seller"
+                                                value="Buyer"
                                             />
                                             <label
                                                 className="ml-2"
-                                                htmlFor="seller"
+                                                htmlFor="Buyer"
                                             >
-                                                Seller
+                                                Buyer
                                             </label>
                                         </div>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <Link
-                                            to="/signup"
+                                        <input
+                                            type="submit"
                                             className="btn btn-primary bg-blue-400"
-                                        >
-                                            SignUp
-                                        </Link>
+                                        />
                                     </div>
                                 </form>
                                 <div className="flex items-center pt-4 space-x-1">
@@ -147,8 +154,7 @@ const SignUp = () => {
                                 <p className="text-xs text-center sm:px-6 dark:text-gray-400">
                                     have an account? please..
                                     <Link
-                                        rel="noopener noreferrer"
-                                        href="#"
+                                        to="/signin"
                                         className="underline dark:text-blue-400"
                                     >
                                         SignIn
