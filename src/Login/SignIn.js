@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/Context";
 const SignIn = () => {
+    const { signin } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
@@ -9,6 +11,12 @@ const SignIn = () => {
     } = useForm();
     const handleLogin = (data) => {
         console.log(data);
+        signin(data.Email, data.Password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch((err) => console.log(err));
     };
     return (
         <div className="w-10/12 mx-auto">
@@ -35,12 +43,21 @@ const SignIn = () => {
                                         type="email"
                                         placeholder="Email"
                                         {...register("Email", {
-                                            required: true,
+                                            required:
+                                                "Email Address is required",
                                             pattern: /^\S+@\S+$/i,
                                         })}
                                         className="input input-bordered w-full max-w-xs"
+                                        aria-invalid={
+                                            errors.Email ? "true" : "false"
+                                        }
                                     />
                                 </div>
+                                {errors.Email && (
+                                    <p role="alert" className="text-red-600">
+                                        {errors.Email?.message}
+                                    </p>
+                                )}
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">
@@ -50,10 +67,20 @@ const SignIn = () => {
                                     <input
                                         type="password"
                                         placeholder="Password"
-                                        {...register("Password", {})}
+                                        {...register("Password", {
+                                            required: "Password is required",
+                                        })}
                                         className="input input-bordered w-full max-w-xs"
+                                        aria-invalid={
+                                            errors.Password ? "true" : "false"
+                                        }
                                     />
                                 </div>
+                                {errors.Password && (
+                                    <p role="alert" className="text-error">
+                                        {errors.Password?.message}
+                                    </p>
+                                )}
 
                                 <div className="form-control mt-6">
                                     <input

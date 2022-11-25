@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/Context";
 const SignUp = () => {
+    const { createUser } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const handleLogin = (data) => {
+        console.log(data);
+        createUser(data.Email, data.Password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch((err) => console.log(err));
+    };
     return (
         <div>
             <div className="w-10/12 mx-auto">
@@ -23,7 +33,7 @@ const SignUp = () => {
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                             <div className="card-body">
                                 {/* FORM */}
-                                <form onSubmit={handleSubmit(onSubmit)}>
+                                <form onSubmit={handleSubmit(handleLogin)}>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">
@@ -33,10 +43,24 @@ const SignUp = () => {
                                         <input
                                             type="text"
                                             placeholder="Name"
-                                            {...register("Name", {})}
+                                            {...register("Name", {
+                                                required: true,
+                                            })}
                                             className="input input-bordered w-full max-w-xs"
+                                            aria-invalid={
+                                                errors.Name ? "true" : "false"
+                                            }
                                         />
                                     </div>
+                                    {errors.Name?.type === "required" && (
+                                        <p
+                                            role="alert"
+                                            className="text-red-600"
+                                        >
+                                            Name is required
+                                        </p>
+                                    )}
+
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">
@@ -47,11 +71,23 @@ const SignUp = () => {
                                             type="email"
                                             placeholder="Email"
                                             {...register("Email", {
-                                                required: true,
+                                                required:
+                                                    "Email Address is required",
                                                 pattern: /^\S+@\S+$/i,
                                             })}
                                             className="input input-bordered w-full max-w-xs"
+                                            aria-invalid={
+                                                errors.Email ? "true" : "false"
+                                            }
                                         />
+                                        {errors.Email && (
+                                            <p
+                                                role="alert"
+                                                className="text-red-600"
+                                            >
+                                                {errors.Email?.message}
+                                            </p>
+                                        )}
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
@@ -60,12 +96,14 @@ const SignUp = () => {
                                             </span>
                                         </label>
                                         <input
+                                            autoComplete="false"
                                             type="password"
                                             placeholder="Password"
                                             {...register("Password", {})}
                                             className="input input-bordered w-full max-w-xs"
                                         />
                                     </div>
+
                                     <p className="my-3 text-sm">Sign Up as:</p>
                                     <div className="flex items-center">
                                         <div className="flex items-center mr-4">

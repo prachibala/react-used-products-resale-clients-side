@@ -28,7 +28,7 @@ const Context = ({ children }) => {
         });
     };
     // SIGNIN
-    const signIn = (email, password) => {
+    const signin = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
@@ -57,7 +57,7 @@ const Context = ({ children }) => {
     const authInfo = {
         user,
         createUser,
-        signIn,
+        signin,
         googleSignin,
         updateUser,
         loading,
