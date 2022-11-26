@@ -9,7 +9,7 @@ const Home = () => {
             <section className=" dark:text-gray-800 w-10/12 mx-auto">
                 <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                     <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                        <h1 className="text-5xl font-bold leading-none sm:text-6xl">
+                        <h1 className="text-5xl font-bold leading-none sm:text-5xl md:text-5xl ">
                             Ac mattis
                             <span className="dark:text-blue-300">senectus</span>
                             erat pharetra
@@ -40,7 +40,7 @@ const Home = () => {
                         <img
                             src={pic}
                             alt=""
-                            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 rounded"
+                            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
                         />
                     </div>
                 </div>

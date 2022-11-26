@@ -63,8 +63,8 @@ const Nav = () => {
                             </ul>
                         </div>
                         <a className="btn btn-ghost normal-case text-xl">
-                            Take
-                            <span className="text-blue-300 text-2xl">M</span>e
+                            Reto
+                            <span className="text-blue-300 text-2xl">C</span>art
                         </a>
                     </div>
 
