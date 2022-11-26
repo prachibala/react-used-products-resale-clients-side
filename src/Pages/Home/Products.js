@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Products = () => {
     return (
@@ -46,9 +47,12 @@ const Products = () => {
                                 <p className="flex-1 py-2 text-md text-secondary leading-snug">
                                     Price: $567
                                 </p>
-                                <button className="btn btn-ghost sm:btn-sm md:btn-md lg:btn-md bg-blue-400 text-gray-800">
+                                <Link
+                                    to="/product-details"
+                                    className="btn btn-ghost sm:btn-sm md:btn-md lg:btn-md bg-blue-400 text-gray-800"
+                                >
                                     View Details
-                                </button>
+                                </Link>
                                 <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
                                     <span>June 1, 2020</span>
                                     <span>2.1K views</span>

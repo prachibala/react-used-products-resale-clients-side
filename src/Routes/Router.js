@@ -15,6 +15,7 @@ import MyProducts from "../Pages/Dashboard/MyProducts";
 import MyOrders from "../Pages/Dashboard/MyOrders";
 import AllSellers from "../Pages/Dashboard/AllSellers";
 import AllBuyers from "../Pages/Dashboard/AllBuyers";
+import AddCategory from "../Pages/Dashboard/AddCategory";
 
 const router = createBrowserRouter([
     {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/all-buyers",
                 element: <AllBuyers></AllBuyers>,
+            },
+            {
+                path: "/dashboard/add-category",
+                element: <AddCategory></AddCategory>,
             },
         ],
     },

@@ -1,4 +1,5 @@
 import React from "react";
+import BookModal from "./Home/BookModal";
 
 const ProdDetails = () => {
     return (
@@ -72,12 +73,14 @@ const ProdDetails = () => {
                                     </time>
                                 </div>
                             </div>
-                            <button
-                                type="button"
-                                className="px-8 py-3 font-semibold rounded dark:bg-blue-400 dark:text-gray-800 "
+
+                            <label
+                                htmlFor="booking-modal"
+                                className="btn btn-ghost px-8 py-3 font-semibold rounded dark:bg-blue-400 dark:text-gray-800 "
                             >
                                 BOOK NOW
-                            </button>
+                            </label>
+                            <BookModal></BookModal>
                         </div>
                     </a>
                 </div>
