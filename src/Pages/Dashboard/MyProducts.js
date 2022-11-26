@@ -1,6 +1,8 @@
 import React from "react";
+import UseTitle from "../../Hooks/UseTitle";
 
 const MyProducts = () => {
+    UseTitle("My Product");
     return (
         <div>
             <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">

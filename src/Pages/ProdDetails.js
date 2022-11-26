@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import UseTitle from "../Hooks/UseTitle";
 import BookModal from "./Home/BookModal";
 
 const ProdDetails = () => {
+    UseTitle("Product Details");
     return (
         <div className="w-10/12 mx-auto mt-10">
             <section className=" dark:text-gray-800 ">

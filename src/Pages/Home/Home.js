@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import pic from "../../Images/hero-pic2.jpg";
 import Categories from "./Categories";
 import Products from "./Products";
+import UseTitle from "../../Hooks/UseTitle";
 const Home = () => {
+    UseTitle(" Home");
     return (
         <>
             <section className=" dark:text-gray-800 w-10/12 mx-auto">

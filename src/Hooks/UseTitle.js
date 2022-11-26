@@ -2,7 +2,7 @@ const { useEffect } = require("react");
 
 const UseTitle = (title) => {
     useEffect(() => {
-        document.title = `${title} - Snack Box`;
+        document.title = `${title} - RetoCart`;
     }, [title]);
 };
 export default UseTitle;

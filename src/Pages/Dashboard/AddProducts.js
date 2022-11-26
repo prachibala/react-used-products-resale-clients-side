@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import UseTitle from "../../Hooks/UseTitle";
 import pic from "../../Images/addCart.svg";
 
 const AddProducts = () => {
+    UseTitle("Add Product");
     const {
         register,
         handleSubmit,
