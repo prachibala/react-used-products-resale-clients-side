@@ -1,7 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/Context";
 
 const Nav = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const LogOut = () => {
+        logOut()
+            .then(() => {
+                navigate("/");
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
     return (
         <>
             <div className=" w-10/12 mx-auto p-4">
@@ -44,15 +56,27 @@ const Nav = () => {
                                         Dashboard
                                     </Link>
                                 </li>
+
+                                {/* user ----->log in || log out */}
+
                                 <li>
-                                    <Link to="/signin">Sign In</Link>
+                                    {user ? (
+                                        <Link to="/" onClick={LogOut}>
+                                            LogOut
+                                        </Link>
+                                    ) : (
+                                        <Link to="/signin">Sign in</Link>
+                                    )}
                                 </li>
                             </ul>
                         </div>
-                        <a className="btn btn-ghost normal-case text-xl">
+                        <Link
+                            to="/"
+                            className="btn btn-ghost normal-case text-xl"
+                        >
                             Reto
                             <span className="text-blue-300 text-2xl">C</span>art
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="navbar-end">
@@ -74,12 +98,40 @@ const Nav = () => {
                         >
                             Dashboard
                         </Link>
-                        <Link
-                            to="/signin"
-                            className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
-                        >
-                            Sign In
-                        </Link>
+                        {user && (
+                            <div
+                                className="dropdown dropdown-end tooltip tooltip-bottom tooltip-base-300 "
+                                data-tip={user.displayName}
+                            >
+                                <label
+                                    tabIndex={0}
+                                    className="btn btn-ghost btn-circle avatar "
+                                >
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL} alt="" />
+                                    </div>
+                                </label>
+                            </div>
+                        )}
+
+                        {/* user ----->log in || log out */}
+
+                        {user ? (
+                            <Link
+                                to="/signin"
+                                onClick={LogOut}
+                                className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
+                            >
+                                LogOut
+                            </Link>
+                        ) : (
+                            <Link
+                                to="/signin"
+                                className="btn btn-active btn-primary dark:text-gray-800 btn-ghost ml-3 invisible lg:visible"
+                            >
+                                Sign in
+                            </Link>
+                        )}
                         <label
                             htmlFor="dashboard-drawer"
                             tabIndex={0}

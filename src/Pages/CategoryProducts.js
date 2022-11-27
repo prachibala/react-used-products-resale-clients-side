@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import UseTitle from "../Hooks/UseTitle";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../Loader/Loading";
 
-const AllProducts = () => {
-	UseTitle("All Products");
+const CategoryProducts = () => {
+	const params = useParams();
 	const [loading, setLoading] = useState(false);
 	const [products, setProducts] = useState([]);
+	const [category, setCategory] = useState("");
+
+	UseTitle(`${category.name}s`);
 
 	useEffect(() => {
 		setLoading(true);
-		fetch(`${process.env.REACT_APP_server_url}/products`)
+		fetch(
+			`${process.env.REACT_APP_server_url}/category-products/${params.id}`
+		)
 			.then((res) => res.json())
 			.then((data) => {
-				setProducts(data);
+				setProducts(data.products);
+				setCategory(data.category);
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -35,8 +41,8 @@ const AllProducts = () => {
 						) : (
 							<>
 								<div className="space-y-2 text-center">
-									<h2 className="text-3xl font-semibold">
-										All Products
+									<h2 className="text-3xl font-semibold uppercase">
+										{`${category.name}s`}
 									</h2>
 								</div>
 								<div className="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
@@ -107,4 +113,4 @@ const AllProducts = () => {
 	);
 };
 
-export default AllProducts;
+export default CategoryProducts;

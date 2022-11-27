@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import UseTitle from "../Hooks/UseTitle";
 import BookModal from "./Home/BookModal";
 
@@ -9,11 +8,7 @@ const ProdDetails = () => {
         <div className="w-10/12 mx-auto mt-10">
             <section className=" dark:text-gray-800 ">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-                    <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 shadow"
-                    >
+                    <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 shadow">
                         <img
                             src="https://source.unsplash.com/random/480x360"
                             alt=""
@@ -85,7 +80,7 @@ const ProdDetails = () => {
                             </label>
                             <BookModal></BookModal>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </section>
         </div>

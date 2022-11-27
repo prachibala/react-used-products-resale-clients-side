@@ -1,11 +1,16 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
 import UseTitle from "../Hooks/UseTitle";
 const SignIn = () => {
     UseTitle("SingIn");
-    const { signin } = useContext(AuthContext);
+    // Google
+    const { googleSignin, signin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
+    // react Hook Form
     const {
         register,
         handleSubmit,
@@ -20,6 +25,18 @@ const SignIn = () => {
             })
             .catch((err) => console.log(err));
     };
+    // Google
+    const googleSubmit = () => {
+        googleSignin(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                navigate("/all-products");
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
     return (
         <div className="w-10/12 mx-auto">
             <div className="hero min-h-screen bg-base-200">
@@ -100,6 +117,7 @@ const SignIn = () => {
                             </div>
                             <div className="flex justify-center space-x-4">
                                 <button
+                                    onClick={googleSubmit}
                                     aria-label="Log in with Google"
                                     className="p-3 rounded-sm"
                                 >

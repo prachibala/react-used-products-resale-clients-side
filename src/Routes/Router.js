@@ -16,76 +16,81 @@ import MyOrders from "../Pages/Dashboard/MyOrders";
 import AllSellers from "../Pages/Dashboard/AllSellers";
 import AllBuyers from "../Pages/Dashboard/AllBuyers";
 import AddCategory from "../Pages/Dashboard/AddCategory";
+import CategoryProducts from "../Pages/CategoryProducts";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Main></Main>,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>,
-            },
-            {
-                path: "/signin",
-                element: <SignIn></SignIn>,
-            },
-            {
-                path: "/signup",
-                element: <SignUp></SignUp>,
-            },
-            {
-                path: "/blogs",
-                element: <Blogs></Blogs>,
-            },
-            {
-                path: "/all-products",
-                element: <AllProducts></AllProducts>,
-            },
-            {
-                path: "/product-details",
-                element: <ProdDetails></ProdDetails>,
-            },
-        ],
-    },
-    {
-        path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
-        children: [
-            {
-                path: "/dashboard",
-                element: <Dashboard></Dashboard>,
-            },
-            {
-                path: "/dashboard/add-products",
-                element: <AddProducts></AddProducts>,
-            },
-            {
-                path: "/dashboard/my-products",
-                element: <MyProducts></MyProducts>,
-            },
-            {
-                path: "/dashboard/my-orders",
-                element: <MyOrders></MyOrders>,
-            },
-            {
-                path: "/dashboard/all-sellers",
-                element: <AllSellers></AllSellers>,
-            },
-            {
-                path: "/dashboard/all-buyers",
-                element: <AllBuyers></AllBuyers>,
-            },
-            {
-                path: "/dashboard/add-category",
-                element: <AddCategory></AddCategory>,
-            },
-        ],
-    },
-    {
-        path: "*",
-        element: <ErrorPage></ErrorPage>,
-    },
+	{
+		path: "/",
+		element: <Main></Main>,
+		children: [
+			{
+				path: "/",
+				element: <Home></Home>,
+			},
+			{
+				path: "/signin",
+				element: <SignIn></SignIn>,
+			},
+			{
+				path: "/signup",
+				element: <SignUp></SignUp>,
+			},
+			{
+				path: "/blogs",
+				element: <Blogs></Blogs>,
+			},
+			{
+				path: "/all-products",
+				element: <AllProducts></AllProducts>,
+			},
+			{
+				path: "/category/:id",
+				element: <CategoryProducts />,
+			},
+			{
+				path: "/product-details",
+				element: <ProdDetails></ProdDetails>,
+			},
+		],
+	},
+	{
+		path: "/dashboard",
+		element: <DashboardLayout></DashboardLayout>,
+		children: [
+			{
+				path: "/dashboard",
+				element: <Dashboard></Dashboard>,
+			},
+			{
+				path: "/dashboard/add-products",
+				element: <AddProducts></AddProducts>,
+			},
+			{
+				path: "/dashboard/my-products",
+				element: <MyProducts></MyProducts>,
+			},
+			{
+				path: "/dashboard/my-orders",
+				element: <MyOrders></MyOrders>,
+			},
+			{
+				path: "/dashboard/all-sellers",
+				element: <AllSellers></AllSellers>,
+			},
+			{
+				path: "/dashboard/all-buyers",
+				element: <AllBuyers></AllBuyers>,
+			},
+			{
+				path: "/dashboard/add-category",
+				element: <AddCategory></AddCategory>,
+			},
+		],
+	},
+	{
+		path: "*",
+		element: <ErrorPage></ErrorPage>,
+	},
 ]);
 
 export default router;
