@@ -25,7 +25,7 @@ const CategoryProducts = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [params.id]);
 
 	return (
 		<div>

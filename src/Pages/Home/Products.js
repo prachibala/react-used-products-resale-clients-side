@@ -25,12 +25,8 @@ const Products = () => {
 				<div className="container p-6 mx-auto space-y-8">
 					<div className="space-y-2 text-center">
 						<h2 className="text-3xl font-bold">
-							Partem reprimique an pro
+							Recently Posted Advertisement
 						</h2>
-						<p className="font-serif text-sm dark:text-gray-400">
-							Qualisque erroribus usu at, duo te agam soluta
-							mucius.
-						</p>
 					</div>
 					{loading ? (
 						<Loading />
@@ -58,7 +54,7 @@ const Products = () => {
 											Price: ${product.resalePrice}
 										</p>
 										<Link
-											to="/product-details"
+											to={`/product-details/${product._id}`}
 											className="btn btn-ghost sm:btn-sm md:btn-md lg:btn-md bg-blue-400 text-gray-800"
 										>
 											View Details
@@ -78,6 +74,15 @@ const Products = () => {
 							))}
 						</div>
 					)}
+				</div>
+				<div className="flex justify-center">
+					<Link
+						rel="noopener noreferrer"
+						to="/all-products"
+						className="px-8 py-3 text-lg font-semibold rounded dark:bg-blue-300 dark:text-grey-800"
+					>
+						View All Products
+					</Link>
 				</div>
 			</section>
 		</div>

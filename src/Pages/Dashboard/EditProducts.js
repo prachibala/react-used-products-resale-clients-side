@@ -1,21 +1,35 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import UseTitle from "../../Hooks/UseTitle";
 import pic from "../../Images/addCart.svg";
 import { toast } from "react-toastify";
 import Loading from "../../Loader/Loading";
-import { AuthContext } from "../../Context/Context";
-import { useNavigate } from "react-router-dom";
 
-const AddProducts = () => {
+import { useNavigate, useParams } from "react-router-dom";
+
+const EditProducts = () => {
 	UseTitle("Add Product");
 	const [loading, setLoading] = useState(false);
-	const [categories, setCategories] = useState([]);
-	const { user } = useContext(AuthContext);
+
 	const navigate = useNavigate();
+	const params = useParams();
+	const { register, handleSubmit, reset, setValue } = useForm({
+		defaultValues: {
+			productDetails: {
+				name: "",
+				resalePrice: "",
+				originalPrice: "",
+				imgUrl: "",
+				condition: "",
+				sellerContact: "",
+				location: "",
+				description: "",
+			},
+		},
+	});
 
 	const notify = () => {
-		toast.success("Product added successfully!", {
+		toast.success("Product updated successfully!", {
 			position: "top-center",
 			autoClose: 5000,
 			hideProgressBar: false,
@@ -29,29 +43,42 @@ const AddProducts = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch(`${process.env.REACT_APP_server_url}/categories`)
+		fetch(
+			`${process.env.REACT_APP_server_url}/product-details/${params.id}`
+		)
 			.then((res) => res.json())
 			.then((data) => {
-				setCategories(data);
+				let d = data[0];
+				setValue("productDetails", {
+					name: d.name,
+					resalePrice: d.resalePrice,
+					originalPrice: d.originalPrice,
+					imgUrl: d.imgUrl,
+					condition: d.condition,
+					sellerContact: d.sellerContact,
+					location: d.location,
+					description: d.description,
+				});
 				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
-
-	const { register, handleSubmit, reset } = useForm();
+	}, [params.id, setValue]);
 
 	const onSubmit = (data) => {
-		const productData = { ...data, createdBy: user.email };
+		const productData = data.productDetails;
 
-		fetch(`${process.env.REACT_APP_server_url}/add-product`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(productData),
-		})
+		fetch(
+			`${process.env.REACT_APP_server_url}/update-product/${params.id}`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(productData),
+			}
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				notify();
@@ -68,10 +95,10 @@ const AddProducts = () => {
 				<div className="flex flex-col justify-between">
 					<div className="space-y-2">
 						<h2 className="text-4xl font-bold leading-tight lg:text-5xl">
-							Add Product!
+							Edit Product
 						</h2>
 						<div className="dark:text-gray-400">
-							Vivamus in nisl metus? Phasellus.
+							Edit Product Details
 						</div>
 						<img
 							src={pic}
@@ -98,7 +125,9 @@ const AddProducts = () => {
 							type="text"
 							placeholder="Product name.."
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("name", { required: true })}
+							{...register("productDetails.name", {
+								required: true,
+							})}
 						/>
 
 						{/* {errors.length > 0 && <p>{errors}</p>} */}
@@ -113,7 +142,9 @@ const AddProducts = () => {
 							type="number"
 							placeholder="Resale price.."
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("resalePrice", { required: true })}
+							{...register("productDetails.resalePrice", {
+								required: true,
+							})}
 						/>
 					</div>
 
@@ -126,7 +157,9 @@ const AddProducts = () => {
 							type="number"
 							placeholder="Original price.."
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("originalPrice", { required: true })}
+							{...register("productDetails.originalPrice", {
+								required: true,
+							})}
 						/>
 					</div>
 
@@ -139,7 +172,9 @@ const AddProducts = () => {
 							type="text"
 							placeholder="Product Image.."
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("imgUrl", { required: true })}
+							{...register("productDetails.imgUrl", {
+								required: true,
+							})}
 						/>
 					</div>
 
@@ -150,7 +185,9 @@ const AddProducts = () => {
 						<select
 							className="w-full p-3 rounded dark:bg-white"
 							id="condition"
-							{...register("condition", { required: true })}
+							{...register("productDetails.condition", {
+								required: true,
+							})}
 						>
 							<option value="excellent">Excellent</option>
 							<option value="good">Good</option>
@@ -167,7 +204,9 @@ const AddProducts = () => {
 							type="text"
 							placeholder="Mobile Number.."
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("sellerContact", { required: true })}
+							{...register("productDetails.sellerContact", {
+								required: true,
+							})}
 						/>
 					</div>
 
@@ -180,25 +219,10 @@ const AddProducts = () => {
 							type="text"
 							placeholder="Location.."
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("location", { required: true })}
+							{...register("productDetails.location", {
+								required: true,
+							})}
 						/>
-					</div>
-
-					<div>
-						<label htmlFor="category" className="text-sm">
-							Product category
-						</label>
-						<select
-							className="w-full p-3 rounded dark:bg-white"
-							id="category"
-							{...register("category", { required: true })}
-						>
-							{categories.map((category) => (
-								<option value={category._id} key={category._id}>
-									{category.name}
-								</option>
-							))}
-						</select>
 					</div>
 
 					<div>
@@ -210,7 +234,9 @@ const AddProducts = () => {
 							placeholder="product description..."
 							rows="3"
 							className="w-full p-3 rounded dark:bg-white"
-							{...register("description", { required: true })}
+							{...register("productDetails.description", {
+								required: true,
+							})}
 						></textarea>
 					</div>
 					{loading ? (
@@ -220,7 +246,7 @@ const AddProducts = () => {
 							type="submit"
 							className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-blue-400 dark:text-white"
 						>
-							Add Product
+							Update Product
 						</button>
 					)}
 				</form>
@@ -229,4 +255,4 @@ const AddProducts = () => {
 	);
 };
 
-export default AddProducts;
+export default EditProducts;

@@ -3,15 +3,15 @@ import UseTitle from "../../Hooks/UseTitle";
 import { AuthContext } from "../../Context/Context";
 import Loading from "../../Loader/Loading";
 
-const MyOrders = () => {
-	UseTitle("My Order");
+const Orders = () => {
+	UseTitle("Orders");
 	const [orders, setOrders] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const { user } = useContext(AuthContext);
 
 	useEffect(() => {
 		fetch(
-			`${process.env.REACT_APP_server_url}/get-my-orders?email=${user?.email}`,
+			`${process.env.REACT_APP_server_url}/get-orders?email=${user?.email}`,
 			{
 				headers: {
 					authorization: `bearer ${localStorage.getItem(
@@ -50,7 +50,7 @@ const MyOrders = () => {
 							<thead className="dark:bg-blue-400 text-base-100">
 								<tr className="text-left">
 									<th className="p-3">Product Name</th>
-									<th className="p-3">Price</th>
+									<th className="p-3">Buyer</th>
 									<th className="p-3">Phone</th>
 									<th className="p-3">Meeting Location</th>
 								</tr>
@@ -65,9 +65,7 @@ const MyOrders = () => {
 											<p>{order.product[0].name}</p>
 										</td>
 										<td className="p-3">
-											<p>
-												{order.product[0].resalePrice}
-											</p>
+											<p>{order.orderBy[0].name}</p>
 										</td>
 										<td className="p-3">
 											<p>{order.phone}</p>
@@ -86,4 +84,4 @@ const MyOrders = () => {
 	);
 };
 
-export default MyOrders;
+export default Orders;

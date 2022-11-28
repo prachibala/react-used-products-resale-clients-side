@@ -73,7 +73,7 @@ const AllProducts = () => {
 															}
 														</p>
 														<Link
-															to="/product-details"
+															to={`/product-details/${product._id}`}
 															className="btn btn-ghost sm:btn-sm md:btn-md lg:btn-md bg-blue-400 text-gray-800"
 														>
 															View Details
