@@ -45,6 +45,8 @@ https://github.com/programming-hero-web-course-4/b612-used-products-resale-serve
 ## Project Description
 
 -   RetoCart is made for buying and selling used products.
--   It is an online snack menu deliver and review system.
--   Users can search and order their most liked menus.
--   Users can also add their opinion(review) with rating.
+-   It is an online ecommerce website with different usertypes.
+-   There are 3 types of users in this project (admin, buyer, seller)
+-   Admin can see both buyer and seller users and verify them.
+-   Buyer can book product with their contact information and meeting locaiton.
+-   Seller can add product, edit them and see the orders.
