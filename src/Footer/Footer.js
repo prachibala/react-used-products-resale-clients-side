@@ -23,7 +23,7 @@ const Footer = () => {
                                 </svg>
                             </div>
                             <span className="self-center text-2xl font-semibold">
-                                TakeMe
+                                RetoCart
                             </span>
                         </Link>
                     </div>
@@ -148,7 +148,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="py-6 text-sm text-center dark:text-gray-400">
-                    © 2022 company co. All rights reserved.
+                    © 2022 RetoCart. All rights reserved.
                 </div>
             </footer>
             ;
