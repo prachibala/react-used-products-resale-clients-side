@@ -5,7 +5,10 @@ const Footer = () => {
     return (
         <div>
             <footer className="px-4 divide-y dark:bg-gray-800 dark:text-gray-100 mt-28">
-                <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
+                <div
+                    className="con
+                iner flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0"
+                >
                     <div className="lg:w-1/3">
                         <Link
                             rel="noopener noreferrer"
