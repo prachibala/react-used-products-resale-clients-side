@@ -5,21 +5,27 @@
 #### Live Site Link
 
 ```
- .....
+https://resale-products-76181.web.app/
+```
+
+#### Admin Login Details
+
+```
+Admin Email: prachibala0@gmail.com
+Admin password: 12345678
 ```
 
 #### Private Repo Client Side Link
 
 ```
-
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-prachibala
 ```
 
 #### Private Repo Server Side Link
 
-````
 ```
-
-````
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-prachibala
+```
 
 ## What We have used in this Project
 
@@ -38,7 +44,7 @@
 
 ## Project Description
 
--   SnackBox is made for Food Lovers.
+-   RetoCart is made for buying and selling used products.
 -   It is an online snack menu deliver and review system.
 -   Users can search and order their most liked menus.
 -   Users can also add their opinion(review) with rating.
