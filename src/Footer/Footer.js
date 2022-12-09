@@ -154,7 +154,6 @@ const Footer = () => {
                     © 2022 RetoCart. All rights reserved.
                 </div>
             </footer>
-            ;
         </div>
     );
 };
